@@ -108,7 +108,6 @@ esp32-asset-tracker
 	  "satellites": "10"
 	}
 		```
-
 ## 4.5. Create an IoT rule to relay messages to Amazon Location
 
 - Navigate to the AWS IoT core dashboard -> Message routing -> Rules
@@ -205,22 +204,22 @@ esp32-asset-tracker
 			}
 			```
 				
-**Note.** Useful commands for debugging/cleaning Location tracker data - use CloudShhell from the Amazon Location (top right menu bar near the Region).
+**Note.** Useful commands for debugging/cleaning Location tracker data - use CloudShell from the Amazon Location (top right menu bar near the Region).
 
-	- get last position:
+- get last position:
 
-        ```
-		aws location get-device-position --device-id esp32-asset-01 --tracker-name esp32-asset-01-tracker
-        ```
+	```
+	aws location get-device-position --device-id esp32-asset-01 --tracker-name esp32-asset-01-tracker
+	```
 
-	- get history:
+- get history:
 
-        ```
-		aws location get-device-position-history --device-id esp32-asset-01 --tracker-name esp32-asset-01-tracker
-        ```
+	```
+	aws location get-device-position-history --device-id esp32-asset-01 --tracker-name esp32-asset-01-tracker
+	```
 
-	- clear history:
-		
-        ```
-        aws location batch-delete-device-position-history --device-ids esp32-asset-01 --tracker-name esp32-asset-01-tracker 
-        ```
+- clear history:
+	
+	```
+	aws location batch-delete-device-position-history --device-ids esp32-asset-01 --tracker-name esp32-asset-01-tracker 
+	```
