@@ -1,3 +1,4 @@
+# esp32-asset-tracker-viewer 
 ==================================================
 esp32-asset-tracker
 ==================================================
@@ -19,51 +20,52 @@ esp32-asset-tracker
 **Note.** The deployment has been tested in us-east-2 region, where all required AWS services are available.
 
 ## 4.1. Create an AWS IoT thing for the IoT device (ESP32) 
-	- Navigate to the AWS IoT console -> All devices -> Things and click Create things
-	- Select Create single thing and click Next
-	- Enter Thing name and click Next
-		- thing name:	esp32-asset-01
-	- Select Auto-generate a new certificate and click Next
-	- Click Create policy
-		- Name: esp32-asset-01-policy
-		- Policy document -> select JSON and replace policy document with:
 
-            ```
-			{
-				"Version": "2012-10-17",
-				"Statement": [
-					{
-					  "Effect": "Allow",
-					  "Action": "iot:Connect",
-					  "Resource": "*"
-					},
-					{
-					  "Effect": "Allow",
-					  "Action": "iot:Publish",
-					  "Resource": "*"
-					},
-					{
-					  "Effect": "Allow",
-					  "Action": "iot:Receive",
-					  "Resource": "*"
-					},
-					{
-					  "Effect": "Allow",
-					  "Action": "iot:Subscribe",
-					  "Resource": "*"
-					}
-				]
-			}
-            ```
+- Navigate to the AWS IoT console -> All devices -> Things and click Create things
+- Select Create single thing and click Next
+- Enter Thing name and click Next
+	- thing name:	esp32-asset-01
+- Select Auto-generate a new certificate and click Next
+- Click Create policy
+	- Name: esp32-asset-01-policy
+	- Policy document -> select JSON and replace policy document with:
 
-		- click Create
-	- Return to the Create thing tab select the new created policy (esp32-asset-01-policy) and click Create thing
-	- Download certificates to the right folder and rename them:
-		- Amazon root: esp32-asset-tracker/flash/AmazonRootCA1.pem
-		- Device certificate: esp32-asset-tracker/flash/esp32-asset-01-certificate.pem.crt
-		- Private key: esp32-asset-tracker/flash/esp32-asset-01-private.pem.key
-		- Public key: esp32-asset-tracker/flash/esp32-asset-01-public.pem.key
-	- Click Done
+		```
+		{
+			"Version": "2012-10-17",
+			"Statement": [
+				{
+					"Effect": "Allow",
+					"Action": "iot:Connect",
+					"Resource": "*"
+				},
+				{
+					"Effect": "Allow",
+					"Action": "iot:Publish",
+					"Resource": "*"
+				},
+				{
+					"Effect": "Allow",
+					"Action": "iot:Receive",
+					"Resource": "*"
+				},
+				{
+					"Effect": "Allow",
+					"Action": "iot:Subscribe",
+					"Resource": "*"
+				}
+			]
+		}
+		```
+
+	- click Create
+- Return to the Create thing tab select the new created policy (esp32-asset-01-policy) and click Create thing
+- Download certificates to the right folder and rename them:
+	- Amazon root: esp32-asset-tracker/flash/AmazonRootCA1.pem
+	- Device certificate: esp32-asset-tracker/flash/esp32-asset-01-certificate.pem.crt
+	- Private key: esp32-asset-tracker/flash/esp32-asset-01-private.pem.key
+	- Public key: esp32-asset-tracker/flash/esp32-asset-01-public.pem.key
+- Click Done
 		
 ## 4.2. Flash the ESP32 with MicroPython firmware
 	
