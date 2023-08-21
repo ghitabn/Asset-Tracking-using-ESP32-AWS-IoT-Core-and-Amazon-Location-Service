@@ -544,6 +544,6 @@ In order to remove created AWS resources and avoid charges follow the steps belo
 - esp32-asset-tracker-viewer - from a command prompt:
 
 		<pre><code>
-		cd esp32-asset-tracker-viewer
-		amplify delete
+			cd esp32-asset-tracker-viewer
+			amplify delete
 		</pre></code>
