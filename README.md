@@ -6,14 +6,21 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 - esp32-asset-tracker: implementation of the asset tracker using a physical device, AWS IoT Core and Amazon Location Service
 - esp32-asset-tracker-viewer (optional): web application built on AWS Amplify to display current and historical location of the tracked device on a map 
 
-# 2. AWS Architecture and schematics
+# 2. AWS Architecture, schematics and other additional files
 - AWS architecture diagram: others\architecture.png
 - Schematics: others\schematics.png
+- others:
+	- view of physical tracker device: physical_view.jpg
+	- example, GeoJSON file: des-sources.json
+	- example, ENTER geofence event, SNS notification by SMS: example-ENTER_geofence_notification.jpg
+	- example, EXIT geofence event, SNS notification by SMS: example-EXIT_geofence_notification.jpg
+	- example, tracker on-map visualization: example-tracker_visualization.png
+
 
 # 3. Hardware
 
 - 1x DOIT ESP32 DEVKIT V1 (client devices) (https://www.amazon.ca/KeeYees-Development-Bluetooth-Microcontroller-ESP-WROOM-32/dp/B07QCP2451)
-- 1x DHT11 (temperature and humidity sensor) (https://www.amazon.ca/dp/B078Y6323W)
+- 1x BN-880 GPS Module (https://www.amazon.ca/dp/B078Y6323W)
 - breadboard and wires
 
 # 4. Esp32-asset-tracker step by step
