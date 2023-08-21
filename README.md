@@ -551,5 +551,5 @@ In order to remove created AWS resources and avoid charges follow the steps belo
 	</pre></code>
 
 	- from AWS console:
-		- empti and delete the S3 bucket used for hosting (name similar to esp32assettrackview-xxx-hostingbucket)
+		- empty and delete the S3 bucket used for hosting (name similar to esp32assettrackview-xxx-hostingbucket)
 	
