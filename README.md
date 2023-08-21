@@ -264,7 +264,7 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 	amplify init
 
 		Project information
-		| Name: esp32assettrackview
+		| Name: <b>esp32assettrackview</b>
 		| Environment: dev
 		| Default editor: Visual Studio Code
 		| App type: javascript
@@ -274,14 +274,14 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 		| Build Command: npm.cmd run-script build
 		| Start Command: npm.cmd run-script start
 
-		? Initialize the project with the above configuration? Yes
+		? Initialize the project with the above configuration? <b>Yes</b>
 		Using default provider  awscloudformation
-		? Select the authentication method you want to use: AWS profile
+		? Select the authentication method you want to use: <b>AWS profile</b>
 
 		For more information on AWS Profiles, see:
 		https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
 
-		? Please choose the profile you want to use ghitabn-poc
+		? Please choose the profile you want to use <b>your-profile</b>
 		Adding backend environment dev to AWS Amplify app: d1csrdcbrqaj48
 
 		Deployment completed.
@@ -314,29 +314,29 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 	<pre><code>
 	amplify add geo
 	
-		? Select which capability you want to add: Map (visualize the geospatial data)
-		√ geo category resources require auth (Amazon Cognito). Do you want to add auth now? (Y/n) · yes
+		? Select which capability you want to add: <b>Map (visualize the geospatial data)</b>
+		√ geo category resources require auth (Amazon Cognito). Do you want to add auth now? (Y/n) · <b>yes</b>
 		Using service: Cognito, provided by: awscloudformation
 
 		 The current configured provider is Amazon Cognito.
 
-		 Do you want to use the default authentication and security configuration? Default configuration
+		 Do you want to use the default authentication and security configuration? <b>Default configuration</b>
 		 Warning: you will not be able to edit these selections.
-		 How do you want users to be able to sign in? Username
-		 Do you want to configure advanced settings? No, I am done.
+		 How do you want users to be able to sign in? <b>Username</b>
+		 Do you want to configure advanced settings? <b>No, I am done.</b>
 		✅ Successfully added auth resource esp32assettrackview0e231fc2 locally
 
 		✅ Some next steps:
 		"amplify push" will build all your local backend resources and provision it in the cloud
 		"amplify publish" will build all your local backend and frontend resources (if you have hosting category added) and provision it in the cloud
 
-		√ Provide a name for the Map: · esp32assettrackmap
-		√ Who can access this Map? · Authorized and Guest users
+		√ Provide a name for the Map: · <b>esp32assettrackmap</b>
+		√ Who can access this Map? · <b>Authorized and Guest users</b>
 		Available advanced settings:
 		- Map style & Map data provider (default: Streets provided by Esri)
 
-		√ Do you want to configure advanced settings? (y/N) · yes
-		√ Specify the map style. Refer https://docs.aws.amazon.com/location-maps/latest/APIReference/API_MapConfiguration.html · Explore (data provided by HERE)
+		√ Do you want to configure advanced settings? (y/N) · <b>yes</b>
+		√ Specify the map style. Refer https://docs.aws.amazon.com/location-maps/latest/APIReference/API_MapConfiguration.html · <b>Explore (data provided by HERE)</b>
 		⚠️ Specified resource configuration requires Cognito Identity Provider unauthenticated access but it is not enabled.
 		✅ Successfully updated auth resource locally.
 		✅ Successfully added resource esp32assettrackmap locally.
@@ -433,8 +433,8 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 	<pre><code>
 	amplify hosting add
 	
-		√ Select the plugin module to execute · Amazon CloudFront and S3
-		√ hosting bucket name · esp32assettrackview-20230819222706-hostingbucket
+		√ Select the plugin module to execute · <b>Amazon CloudFront and S3</b>
+		√ hosting bucket name · <b>esp32assettrackview-20230819222706-hostingbucket</b>
 		Static webhosting is disabled for the hosting bucket when CloudFront Distribution is enabled.
 		  Amazon CloudFront and S3
 		You can now publish your app using the following command:
@@ -449,12 +449,12 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 		| App type: javascript
 		| Javascript framework: react
 		| Source Directory Path: src
-		| Distribution Directory Path: build
+		| Distribution Directory Path: <b>dist</b>
 		| Build Command: npm.cmd run-script build
 		| Start Command: npm.cmd run-script start
 
 		AWS Profile setting
-		| Selected profile: ghitabn-poc
+		| Selected profile: <b>your-profile</b>
 
 		Advanced: Container-based deployments
 		| Leverage container-based deployments: No
@@ -541,9 +541,15 @@ In order to remove created AWS resources and avoid charges follow the steps belo
 	- detach, deactivate and delete IoT certificate attached to the IoT thing (MyClientDeviceESP-03)
 	- delete IoT thing (MyClientDeviceESP-03)
 
-- esp32-asset-tracker-viewer - from a command prompt:
+- esp32-asset-tracker-viewer 
+
+	- from a command prompt:
 
 	<pre><code>
-		cd esp32-asset-tracker-viewer
-		amplify delete
+	cd esp32-asset-tracker-viewer
+	amplify delete
 	</pre></code>
+
+	- from AWS console:
+		- empti and delete the S3 bucket used for hosting (name similar to esp32assettrackview-xxx-hostingbucket)
+	
