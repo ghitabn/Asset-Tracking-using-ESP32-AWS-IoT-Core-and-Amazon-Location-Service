@@ -10,11 +10,11 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 - AWS architecture diagram: others\architecture.png
 - Schematics: others\schematics.png
 - others:
-	- view of physical tracker device: physical_view.jpg
-	- example, GeoJSON file: des-sources.json
-	- example, ENTER geofence event, SNS notification by SMS: example-ENTER_geofence_notification.jpg
-	- example, EXIT geofence event, SNS notification by SMS: example-EXIT_geofence_notification.jpg
-	- example, tracker on-map visualization: example-tracker_visualization.png
+	- view of physical tracker device: others\physical_view.jpg
+	- example, GeoJSON file: others\des-sources.json
+	- example, ENTER geofence event, SNS notification by SMS: others\example-ENTER_geofence_notification.jpg
+	- example, EXIT geofence event, SNS notification by SMS: others\example-EXIT_geofence_notification.jpg
+	- example, tracker on-map visualization: others\example-tracker_visualization.png
 
 
 # 3. Hardware
