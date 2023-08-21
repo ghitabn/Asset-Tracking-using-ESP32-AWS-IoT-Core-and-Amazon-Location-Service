@@ -1,6 +1,8 @@
 # 1. Description
+Esp32-asset-tracker is an implementation of an asset tracker using physical devices (a GPS module connected to an ESP32 development board), AWS IoT Core and Amazon Location Service
+Esp32-asset-tracker-viewer (optional): a web application to display current and historical device locations on a map, built using AWS Amplify 
 
-# 2. AWS Architecture and schematics diagrams
+# 2. AWS Architecture and schematics
 - AWS architecture diagram: others\architecture.png
 - Schematics: others\schematics.png
 
@@ -10,7 +12,7 @@
 - 1x DHT11 (temperature and humidity sensor) (https://www.amazon.ca/dp/B078Y6323W)
 - breadboard and wires
 
-# 4. Steps (esp32-asset-tracker)
+# 4. Esp32-asset-tracker step by step
 
 **Note.** The deployment has been tested in us-east-2 region, where all required AWS services are available.
 
@@ -220,7 +222,7 @@
 	aws location batch-delete-device-position-history --device-ids esp32-asset-01 --tracker-name esp32-asset-01-tracker 
 	```
 	
-# 5. Steps (esp32-asset-tracker-viewer (optional))
+# 5. Esp32-asset-tracker-viewer (optional) step by step
 
 ## 5.1. Deploy a backend environment on AWS Amplify
 
@@ -515,3 +517,23 @@
 		https://xxxxxxxxxxx.cloudfront.net
 	```
 - browse https://xxxxxxxxxxx.cloudfront.net
+
+# 6. Cleanup
+
+- esp32-asset-tracker:
+	- delete EventBridge rule (geofenceiotassettrackingrule)
+	- delete geofence (des-sources) from geofence collection (geofenceiotassettracking)
+	- delete geofence collection (geofenceiotassettracking)
+	- delete SNS topic (iotassettrackingsnstopic)
+	- delete IoT rule (iot_asset_tracking_rule)
+	- detach and delete IoT policy (MyClientDeviceESP-03-policy)
+	- detach, deactivate and delete IoT certificate attached to the IoT thing (MyClientDeviceESP-03)
+	- delete IoT thing (MyClientDeviceESP-03)
+
+- esp32-asset-tracker-viewer
+	- from a command prompt:
+
+		```
+		cd esp32-asset-tracker-viewer
+		amplify delete
+		```
