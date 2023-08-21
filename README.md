@@ -31,7 +31,7 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 	- Name: esp32-asset-01-policy
 	- Policy document -> select JSON and replace policy document with:
 
-		```
+		<pre><code>
 		{
 			"Version": "2012-10-17",
 			"Statement": [
@@ -57,7 +57,7 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 				}
 			]
 		}
-		```
+		</pre></code>
 
 	- click Create
 - Return to the Create thing tab select the new created policy (esp32-asset-01-policy) and click Create thing
@@ -101,7 +101,7 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 - Check messages in the serial console
 - Use AWS IoT MQTT test client to test subscription to the configured topic (clients/esp32-asset-01/gps-01) - example: 
 
-	```
+	<pre><code>
 	{
 	  "deviceId": "esp32-asset-01",
 	  "utctime": "23:56:46",
@@ -109,7 +109,7 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 	  "longitude": -73.80668,
 	  "satellites": "10"
 	}
-		```
+	</pre></code>
 ## 4.5. Create an IoT rule to relay messages to Amazon Location
 
 - Navigate to the AWS IoT core dashboard -> Message routing -> Rules
@@ -184,7 +184,7 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 	- Examples of dummy MQTT messages to force events:
 		- Enter event (location inside the geofence):
 			
-			```
+			<pre><code>
 			{
 				"deviceId": "esp32-asset-01",
 				"utctime": "120000",
@@ -192,11 +192,11 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 				"longitude": "-73.806302",
 				"satellites": "10"
 			}
-			```
+			</pre></code>
 
 		- Exit event (location outside the geofence):
 			
-			```
+			<pre><code>
 			{
 				"deviceId": "esp32-asset-01",
 				"utctime": "120000",
@@ -204,27 +204,27 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 				"longitude": "-73.804838",
 				"satellites": "10"
 			}
-			```
+			</pre></code>
 				
 **Note.** Useful commands for debugging/cleaning Location tracker data - use CloudShell from the Amazon Location (top right menu bar near the Region).
 
 - get last position:
 
-	```
+	<pre><code>
 	aws location get-device-position --device-id esp32-asset-01 --tracker-name esp32-asset-01-tracker
-	```
+	</pre></code>
 
 - get history:
 
-	```
+	<pre><code>
 	aws location get-device-position-history --device-id esp32-asset-01 --tracker-name esp32-asset-01-tracker
-	```
+	</pre></code>
 
 - clear history:
 	
-	```
+	<pre><code>
 	aws location batch-delete-device-position-history --device-ids esp32-asset-01 --tracker-name esp32-asset-01-tracker 
-	```
+	</pre></code>
 	
 # 5. Esp32-asset-tracker-viewer (optional) step by step
 
@@ -235,32 +235,32 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 	- https://community.aws/tutorials/build-a-real-time-asset-tracking-app-with-amazon-location
 	- https://docs.amplify.aws/cli/
 
-**Note** Before you begin, make sure you have the following installed:
+**Note.** Before you begin, make sure you have the following installed:
 
 	- Node.js v14.x or later
 	- npm v6.14.4 or later
 
 - from a command prompt, get in the application folder
 
-	```
+	<pre><code>
 	cd esp32-asset-tracker-viewer
-	```
+	</pre></code>
 	
 - install dependencies
 	
-	```
+	<pre><code>
 	npm install
-	```
+	</pre></code>
 	
 - install Amplify CLI
 	
-	```
+	<pre><code>
 	npm install -g @aws-amplify/cli
-	```
+	</pre></code>
 
 - initialize the Amplify environment
 	
-	```
+	<pre><code>
 	amplify init
 
 		Project information
@@ -307,11 +307,11 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 
 		Pro tip:
 		Try "amplify add api" to create a backend API and then "amplify push" to deploy everything
-	```
+	</pre></code>
 	
 - add Amazon Location Service resources
 
-	```
+	<pre><code>
 	amplify add geo
 	
 		? Select which capability you want to add: Map (visualize the geospatial data)
@@ -344,22 +344,22 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 		✅ Next steps:
 		"amplify push" builds all of your local backend resources and provisions them in the cloud
 		"amplify publish" builds all of your local backend and front-end resources (if you added hosting category) and provisions them in the cloud
-	```
+	</pre></code>
 	
 - allow application to work with Amazon Location Service Trackers:
 	
-	```
+	<pre><code>
 	amplify override project
 	
 		✅ Successfully generated "override.ts" folder at C:\Users\ghitabn\Documents\esp\Projects\platformio\esp32-asset-tracker\esp32-asset-tracker-viewer\amplify\backend\awscloudformation
 		√ Do you want to edit override.ts file now? (Y/n) · yes
 		Edit the file in your editor: C:\Users\ghitabn\Documents\esp\Projects\platformio\esp32-asset-tracker\esp32-asset-tracker-viewer\amplify\backend\awscloudformation\override.ts
 		? Press enter to continue
-	```
+	</pre></code>
 	
 	- update and save the policy used by Amazon Cognito to display the tracker position on the map by replacing the content of iot-asset-tracking-app\amplify\backend\awscloudformation\override.ts with:
 	
-		```
+		<pre><code>
 		import { AmplifyRootStackTemplate } from "@aws-amplify/cli-extensibility-helper";
 
 		export function override(resources: AmplifyRootStackTemplate) {
@@ -382,11 +382,11 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 			},
 		  ]);
 		}
-		```
+		</pre></code>
 	
 - push Amplify configuration and create resources in the cloud
 	
-	```
+	<pre><code>
 	amplify push
 	
 		√ Successfully pulled backend environment dev from the cloud.
@@ -418,19 +418,19 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 				MapPolicy                      AWS::IAM::Policy               CREATE_IN_PROGRESS             Sat Aug 19 2023 22:21:55…
 
 		Deployment state saved successfully.
-	```
+	</pre></code>
 	
 - launch the application
 	
-	```
+	<pre><code>
 	npm start
-	```
+	</pre></code>
 	
 - browse http://localhost:8080/
 
 - add hosting
 
-	```
+	<pre><code>
 	amplify hosting add
 	
 		√ Select the plugin module to execute · Amazon CloudFront and S3
@@ -524,7 +524,7 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 		√ Uploaded files successfully.
 		Your app is published successfully.
 		https://xxxxxxxxxxx.cloudfront.net
-	```
+	</pre></code>
 - browse https://xxxxxxxxxxx.cloudfront.net
 
 # 6. Cleanup
@@ -543,7 +543,7 @@ In order to remove created AWS resources and avoid charges follow the steps belo
 
 - esp32-asset-tracker-viewer - from a command prompt:
 
-		```
+		<pre><code>
 		cd esp32-asset-tracker-viewer
 		amplify delete
-		```
+		</pre></code>
