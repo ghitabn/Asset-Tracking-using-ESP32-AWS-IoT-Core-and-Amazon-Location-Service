@@ -1,6 +1,10 @@
 # 1. Description
-Esp32-asset-tracker is an implementation of an asset tracker using physical devices (a GPS module connected to an ESP32 development board), AWS IoT Core and Amazon Location Service
-Esp32-asset-tracker-viewer (optional): a web application to display current and historical device locations on a map, built using AWS Amplify 
+The project uses a physical device (ESP32) to read positioning data (latitude, longitude) from an attached GPS module and send it to AWS IoT core.
+Ingested data is used by an Amazon Location tracker with linked geofences for notifications purposes (Amazon Simple Notification Service). 
+On-map visualization of tracked device can be optionnaly implemented on AWS Amplify. 
+
+- esp32-asset-tracker: implementation of the asset tracker using a physical device, AWS IoT Core and Amazon Location Service
+- esp32-asset-tracker-viewer (optional): web application built on AWS Amplify to display current and historical location of the tracked device on a map 
 
 # 2. AWS Architecture and schematics
 - AWS architecture diagram: others\architecture.png
