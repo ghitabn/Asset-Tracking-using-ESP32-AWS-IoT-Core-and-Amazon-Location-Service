@@ -230,7 +230,12 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 
 ## 5.1. Deploy a backend environment on AWS Amplify
 
-**Note.** Before you begin, make sure you have the following installed:
+**References:**
+
+	- https://community.aws/tutorials/build-a-real-time-asset-tracking-app-with-amazon-location
+	- https://docs.amplify.aws/cli/
+
+**Note** Before you begin, make sure you have the following installed:
 
 	- Node.js v14.x or later
 	- npm v6.14.4 or later
@@ -524,7 +529,9 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 
 # 6. Cleanup
 
-- esp32-asset-tracker:
+In order to remove created AWS resources and avoid charges follow the steps below:
+
+- esp32-asset-tracker - from the AWS console:
 	- delete EventBridge rule (geofenceiotassettrackingrule)
 	- delete geofence (des-sources) from geofence collection (geofenceiotassettracking)
 	- delete geofence collection (geofenceiotassettracking)
@@ -534,8 +541,7 @@ On-map visualization of tracked device can be optionnaly implemented on AWS Ampl
 	- detach, deactivate and delete IoT certificate attached to the IoT thing (MyClientDeviceESP-03)
 	- delete IoT thing (MyClientDeviceESP-03)
 
-- esp32-asset-tracker-viewer
-	- from a command prompt:
+- esp32-asset-tracker-viewer - from a command prompt:
 
 		```
 		cd esp32-asset-tracker-viewer
